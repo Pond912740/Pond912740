@@ -1,0 +1,14 @@
+name: Build and Test with GitHub Actions
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Setup Rust
+      run: cargo build -p my_project --release
+    - name: Test
+      run: cargo test -p my_project --release
+    - name: Always succeed
+      run: echo 'Build succeeded!'
